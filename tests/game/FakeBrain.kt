@@ -6,7 +6,7 @@ class FakeBrain:Brain {
     var bird:Bird? = null
     var willJump = false
 
-    override fun setBody(body: Bird?) {
+    override fun setContext(body: Bird, game: Game) {
         this.bird = body
     }
 
