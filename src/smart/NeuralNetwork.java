@@ -1,9 +1,16 @@
 package smart;
 
+import game.Bird;
+import game.Game;
+import game.Pillar;
+
 import java.util.Arrays;
 import java.util.Random;
 
-public class NeuralNetwork {
+public class NeuralNetwork implements Brain {
+
+    private Bird body;
+    private Game game;
 
     private static final int numInputs = 2;
     private static final int numHidden = 6;
@@ -43,7 +50,7 @@ public class NeuralNetwork {
      * @param inputs takes 2 inputs
      * @return calculated output
      */
-    private double calculate(int... inputs){
+    private double calculate(double... inputs){
         if(inputs.length != numInputs){
             throw new IllegalArgumentException();
         }
@@ -61,5 +68,27 @@ public class NeuralNetwork {
             output += weightsHiddenToOut[i] * hiddenNeurons[i];
         }
         return Sigmoid.sigmoid(output);
+    }
+
+
+    @Override
+    public void setContext(Bird body, Game game) {
+        this.body = body;
+        this.game = game;
+    }
+
+    @Override
+    public boolean thinksAboutJumping() {
+        Pillar pillar = game.getPillars().get(0);
+        pillar.getGapY();
+
+        // vertical distance to next checkpoint
+        double heightDifferance = body.getYPos() - pillar.getGapY();
+
+        // horizontal distance to next checkpoint
+        double xDistance = pillar.getXPos() + pillar.getWidth() - body.getXPos();
+
+        double out = calculate(heightDifferance,xDistance);
+        return out > 0.5;
     }
 }
