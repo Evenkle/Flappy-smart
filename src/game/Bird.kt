@@ -4,7 +4,7 @@ import smart.Brain
 
 private val gravity = -1
 
-class Bird(private val game:Game, val brain: Brain) {
+class Bird(private val game: Game, val brain: Brain) {
     val size = 10
     var isDead = false
         private set
@@ -16,17 +16,17 @@ class Bird(private val game:Game, val brain: Brain) {
         private set
 
     init {
-        brain.body = this
+        brain.setBody(this)
     }
 
-    internal fun jump() {
+    private fun jump() {
         if (isDead) return
         ySpeed = 20
     }
 
     fun tick() {
         if (isDead) return
-        // if (brain.thinksAboutJumping()) jump()
+        if (brain.thinksAboutJumping()) jump()
         xPos += 1
         yPos += ySpeed
         ySpeed += gravity
