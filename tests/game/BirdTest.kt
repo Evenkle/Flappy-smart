@@ -10,8 +10,24 @@ internal class BirdTest {
         val game = Game()
         val brain = FakeBrain()
         val bird = Bird(game, brain)
+
         assertEquals(50, bird.yPos)
         assertEquals(0, bird.xPos)
+
+        game.tick()
+        bird.tick()
+
+        assertEquals(49, bird.yPos)
+        assertEquals(1, bird.xPos)
+        assertFalse(bird.isDead)
+
+        for (i in 0..8) {
+            game.tick()
+            bird.tick()
+        }
+
+        assertTrue(bird.isDead)
+        assertTrue(0 >= bird.yPos)
     }
 
 }

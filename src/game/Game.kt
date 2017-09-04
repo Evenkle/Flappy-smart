@@ -8,15 +8,17 @@ class Game {
     var currentX = 0
         private set
 
-    val pillars = MutableList(PILLAR_COUNT, { Pillar(it * WIDTH / PILLAR_COUNT) })
+    val pillars = MutableList(PILLAR_COUNT, { Pillar((it + 1) * WIDTH / PILLAR_COUNT) })
 
-    fun willSurvive(bird: Bird): Boolean {
+    fun checkKilled(bird: Bird): Boolean {
+        if (bird.yPos <= 0) return true
         // Check if we crashed into any pillar whatsoever
         return pillars.any {
-            bird.xPos - bird.size > it.xPos - it.width &&
-                    bird.xPos < it.xPos + it.width &&
-                    bird.yPos - bird.size > it.gapY - it.gapSize / 2 &&
-                    bird.yPos < it.gapY + it.gapSize / 2
+            val afterStart = bird.xPos > it.xPos - it.width
+            val beforeEnd = bird.xPos - bird.size < it.xPos
+            val belowGap = bird.yPos < it.gapY - it.gapSize / 2
+            val aboveGap = bird.yPos + bird.size > it.gapY + it.gapSize / 2
+            afterStart && beforeEnd && (belowGap || aboveGap)
         }
     }
 

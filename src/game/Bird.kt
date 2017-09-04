@@ -12,12 +12,13 @@ class Bird(private val game: Game, val brain: Brain) {
     var isDead = false
         private set // Can not be updated from outside this class
 
-    // xPos and yPos is the top left corner of our bird
+    // xPos and yPos is the bottom right corner of our bird
     var xPos = 0
         private set
     var yPos = 50
         private set
 
+    // Negative => falling
     var ySpeed = 0
         private set
 
@@ -28,9 +29,9 @@ class Bird(private val game: Game, val brain: Brain) {
     fun tick() {
         if (isDead) return
         xPos += 1
-        yPos += ySpeed
         ySpeed += gravity
-        isDead = game.willSurvive(this)
+        yPos += ySpeed
+        isDead = game.checkKilled(this)
         if (brain.thinksAboutJumping()) ySpeed = 20
     }
 }
