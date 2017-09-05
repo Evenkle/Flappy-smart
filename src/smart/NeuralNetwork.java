@@ -16,8 +16,8 @@ public class NeuralNetwork implements Brain {
     private static final int numHidden = 6;
     private static final int numOutput = 1;
 
-    double[] weightsInnToHidden = new double[numInputs*numHidden];
-    double[] weightsHiddenToOut = new double[numHidden*numOutput];
+    public double[] weightsInnToHidden = new double[numInputs*numHidden];
+    public double[] weightsHiddenToOut = new double[numHidden*numOutput];
 
     double[] hiddenNeurons = new double[numHidden];
     {
