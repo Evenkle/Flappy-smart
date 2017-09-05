@@ -6,7 +6,7 @@ import smart.Brain
  * A square bird.
  */
 class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
-    val size = 30
+    val size = SIZE
     var isDead = false
         private set // Can not be updated from outside this class
 
@@ -47,5 +47,6 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
 
     companion object {
         private val gravity = -1
+        val SIZE = 30
     }
 }

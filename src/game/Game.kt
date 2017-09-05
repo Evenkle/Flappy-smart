@@ -56,14 +56,7 @@ class Game {
      * @return the first pillar you can still crash into
      */
     fun getNextPillar(): Pillar {
-        return pillars.reduce({ pillar1, pillar2 ->
-            return when {
-                pillar1.xPos < currentX -> pillar2
-                pillar2.xPos < currentX -> pillar1
-                pillar1.xPos < pillar2.xPos -> pillar1
-                else -> pillar2
-            }
-        })
+        return pillars.filter { it.xPos - Bird.SIZE > currentX }.minBy { it.xPos }!!
     }
 
     companion object {

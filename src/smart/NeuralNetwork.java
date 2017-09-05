@@ -12,7 +12,7 @@ public class NeuralNetwork implements Brain {
     private Bird body;
     private Game game;
 
-    private static final int numInputs = 3;
+    private static final int numInputs = 2;
     private static final int numHidden = 6;
     private static final int numOutput = 1;
 
@@ -88,7 +88,7 @@ public class NeuralNetwork implements Brain {
 
     @Override
     public boolean thinksAboutJumping() {
-        Pillar pillar = game.getPillars().get(0);
+        Pillar pillar = game.getNextPillar();
         pillar.getGapY();
 
         // vertical distance to next checkpoint
@@ -97,7 +97,7 @@ public class NeuralNetwork implements Brain {
         // horizontal distance to next checkpoint
         double xDistance = pillar.getXPos() + pillar.getWidth() - body.getXPos();
 
-        double out = calculate(heightDifference, xDistance, body.getYSpeed());
+        double out = calculate(heightDifference, xDistance);
         return out > 0.5;
     }
 }
