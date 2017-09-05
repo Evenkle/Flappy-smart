@@ -61,7 +61,7 @@ public class NeuralNetwork implements Brain {
             }
             hiddenNeurons[i] = Sigmoid.sigmoid(nevron);
         }
-
+        System.out.println(Arrays.toString(hiddenNeurons));
         double output = 0;
 
         for (int i = 0; i < numHidden; i++) {
