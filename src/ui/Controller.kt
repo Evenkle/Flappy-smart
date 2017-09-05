@@ -3,8 +3,10 @@ package ui
 import game.Game
 import genetics.GeneticAlgorithm
 import genetics.Population
+import javafx.application.Platform
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
+import javafx.scene.control.Label
 import javafx.scene.image.ImageView
 import javafx.scene.layout.Pane
 import javafx.scene.paint.Color
@@ -17,9 +19,13 @@ class Controller {
     @FXML
     var gameContainer: Pane? = null
 
+    @FXML
+    var statusText: Label? = null
+
     private var game = Game()
-    private var population = Population(POPULATION_SIZE, true, game)
+    private var population = Population(POPULATION_SIZE, true, game, 1)
     private var timer = Timer()
+    private var bestDistance = 0
 
     private val birdViews = population.birds.map { bird ->
         val imageView = ImageView("img/birdFrame0.png")
@@ -45,6 +51,7 @@ class Controller {
     @FXML
     fun onStartClicked(action: ActionEvent) {
         println("Starting game!")
+        statusText?.text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
         restartTimer()
     }
 
@@ -59,7 +66,9 @@ class Controller {
     fun onResetClicked(action: ActionEvent) {
         println("Resetting game")
         game = Game()
-        population = Population(POPULATION_SIZE, true, game)
+        population = Population(POPULATION_SIZE, true, game, 1)
+        bestDistance = 0
+        statusText?.text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
         restartTimer()
     }
 
@@ -80,27 +89,33 @@ class Controller {
                 if (population.birds.all { it.isDead }) {
                     println("All dead")
                     timer.cancel()
-                    createGeneration()
+                    Platform.runLater {
+                        createGeneration()
+                    }
                 }
             }
         }
 
     private fun createGeneration() {
+        bestDistance = Math.max(bestDistance, game.currentX)
+        statusText?.text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
         game.reset()
         population = GeneticAlgorithm.evolvePopulation(population)
         restartTimer()
     }
 
     private fun updateUI() {
-        birdViews.forEachIndexed { index, imageView ->
-            val bird = population.birds[index]
-            imageView.translateX = (bird.xPos - game.currentX - bird.size).toDouble()
-            imageView.translateY = (Game.HEIGHT - bird.yPos - bird.size).toDouble()
-        }
-        pillarViews.forEachIndexed { index, pillarView ->
-            val pillar = game.pillars[index]
-            pillarView.translateX = (pillar.xPos - pillar.width - game.currentX).toDouble()
-            pillarView.translateY = (Game.HEIGHT - pillar.gapY - pillar.gapSize / 2).toDouble()
+        Platform.runLater {
+            birdViews.forEachIndexed { index, imageView ->
+                val bird = population.birds[index]
+                imageView.translateX = (bird.xPos - game.currentX - bird.size).toDouble()
+                imageView.translateY = (Game.HEIGHT - bird.yPos - bird.size).toDouble()
+            }
+            pillarViews.forEachIndexed { index, pillarView ->
+                val pillar = game.pillars[index]
+                pillarView.translateX = (pillar.xPos - pillar.width - game.currentX).toDouble()
+                pillarView.translateY = (Game.HEIGHT - pillar.gapY - pillar.gapSize / 2).toDouble()
+            }
         }
     }
 

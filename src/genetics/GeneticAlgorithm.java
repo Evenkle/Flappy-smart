@@ -54,7 +54,7 @@ public class GeneticAlgorithm {
             mutate(newBirds[i]);
         }
 
-        return new Population(newBirds, population.getGame());
+        return new Population(newBirds, population.getGame(), population.generation + 1);
     }
 
     private static Bird crossover(Bird bird1, Bird bird2, Game game){
@@ -143,7 +143,7 @@ public class GeneticAlgorithm {
             Arrays.fill(brain.weightsHiddenToOut, i + 1);
             System.out.println(brain);
         }
-        Population pop = new Population(birds, game);
+        Population pop = new Population(birds, game, 0);
         System.out.println(pop);
 
         Population pop2 = evolvePopulation(pop);

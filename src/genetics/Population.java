@@ -11,9 +11,12 @@ public class Population {
     Bird[] birds;
     Game game;
 
-    public Population(int populationSize, boolean initiate, Game game){
+    public final int generation;
+
+    public Population(int populationSize, boolean initiate, Game game, int generation){
         birds = new Bird[populationSize];
         this.game = game;
+        this.generation = generation;
         if(initiate) {
             for (int i = 0; i < size(); i++) {
                 Bird bird = new Bird(game, new NeuralNetwork());
@@ -22,9 +25,10 @@ public class Population {
         }
     }
 
-    public Population(Bird[] birds, Game game){
+    public Population(Bird[] birds, Game game, int generation){
         this.game = game;
         this.birds = birds.clone();
+        this.generation = generation;
     }
 
     public Game getGame() {
@@ -55,7 +59,7 @@ public class Population {
 
     public static void main(String[] args) {
         Game game = new Game();
-        Population pop = new Population(10,true, game);
+        Population pop = new Population(10,true, game, 0);
         System.out.println(Arrays.toString(pop.getBirds()));
 
 

@@ -8,26 +8,40 @@ import kotlin.test.assertEquals
 import kotlin.test.fail
 
 internal class GeneticAlgorithmTest {
-    @Test
-    fun doesMakeNewBirds() {
+
+    @Test fun doesWork() {
+        runSimulation(null, 10)
+    }
+
+    private fun runSimulation(incoming: Population? = null, count:Int) {
         val game = Game()
-        val firstPopulation = Population(5, true, game)
-        while (firstPopulation.birds.any { !it.isDead }) {
+
+        val oldPopulation = incoming ?: Population(10, true, game, 0)
+
+        var i = 0
+        while (oldPopulation.birds.any { !it.isDead } && i < 500000) {
             game.tick()
-            firstPopulation.birds.forEach { it.tick() }
+            oldPopulation.birds.forEach { it.tick() }
+            i++
         }
         game.reset()
 
-        val newPopulation = GeneticAlgorithm.evolvePopulation(firstPopulation)
+        val newPopulation = GeneticAlgorithm.evolvePopulation(oldPopulation)
 
         val startingPosition = Bird(game, FakeBrain()).xPos
 
+        assertEquals(oldPopulation.birds.size, newPopulation.birds.size)
+
         newPopulation.birds.forEach { bird ->
-            if (firstPopulation.birds.contains(bird)) {
+            if (oldPopulation.birds.contains(bird)) {
                 fail("$bird is in both new and old population! This will cause UI glitches!")
             }
             assertEquals(startingPosition, bird.xPos, "Bird was not at starting position")
         }
+
+        println("Best bird of $count was ${oldPopulation.sortedBirds[0].xPos}")
+        if (count > 0)
+            runSimulation(newPopulation, count - 1)
     }
 
 }
