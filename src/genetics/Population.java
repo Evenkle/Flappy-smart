@@ -38,7 +38,7 @@ public class Population {
     public static void main(String[] args) {
         Game game = new Game();
         Population pop = new Population(10, game);
-        System.out.println(Arrays.toString(pop.birds));
+        System.out.println(Arrays.toString(pop.getBirds()));
 
 
     }
