@@ -51,7 +51,9 @@ public class Population {
 
     public static void main(String[] args) {
         Game game = new Game();
-        Population pop = new Population(new Bird[]{new Bird(game, new NeuralNetwork())}, game);
-        System.out.println(Arrays.toString(pop.birds));
+        Population pop = new Population(10,true, game);
+        System.out.println(Arrays.toString(pop.getBirds()));
+
+
     }
 }

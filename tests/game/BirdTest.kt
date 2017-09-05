@@ -1,8 +1,7 @@
 package game
 
-import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 internal class BirdTest {
     @Test
@@ -28,6 +27,23 @@ internal class BirdTest {
 
         assertTrue(bird.isDead)
         assertTrue(0 >= bird.yPos)
+    }
+
+    @Test
+    fun fitness() {
+        val game = Game()
+        val brain = FakeBrain()
+        val bird = Bird(game, brain)
+
+        for (i in 0..5) {
+            for (j in 0..10) {
+                game.tick()
+                bird.tick()
+            }
+            brain.willJump = !brain.willJump
+        }
+
+        assertTrue(bird.fitness > -200, bird.toString())
     }
 
 }
