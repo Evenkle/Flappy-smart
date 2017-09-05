@@ -1,8 +1,8 @@
 package game
 
 val WIDTH = 300
-val HEIGHT = 600
-val PILLAR_COUNT = 3
+val HEIGHT = 500
+val PILLAR_COUNT = 2
 
 class Game {
     var currentX = 0

@@ -34,6 +34,7 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
         xPos += 1
         ySpeed += gravity
         yPos += ySpeed
+        if (yPos > HEIGHT) yPos = HEIGHT
         isDead = game.checkKilled(this)
         if (brain.thinksAboutJumping()) ySpeed = 20
     }
