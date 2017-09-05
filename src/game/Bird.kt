@@ -17,7 +17,7 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
         private set
 
     // Negative => falling
-    var ySpeed = 0
+    var ySpeed = 20
         private set
 
     val fitness: Int
@@ -34,7 +34,7 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
         yPos += ySpeed
         if (yPos > Game.HEIGHT) yPos = Game.HEIGHT
         isDead = game.checkKilled(this)
-        if (brain.thinksAboutJumping()) ySpeed = 10
+        if (brain.thinksAboutJumping()) ySpeed = 15
     }
 
     override fun compareTo(other: Bird): Int {

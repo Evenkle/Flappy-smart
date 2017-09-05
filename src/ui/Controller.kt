@@ -1,5 +1,6 @@
 package ui
 
+import game.Bird
 import game.Game
 import genetics.GeneticAlgorithm
 import genetics.Population
@@ -8,9 +9,11 @@ import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.control.Label
 import javafx.scene.image.ImageView
+import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
 import javafx.scene.paint.Color
 import javafx.scene.shape.Rectangle
+import smart.HumanBrain
 import java.util.*
 
 val POPULATION_SIZE = 10
@@ -26,6 +29,9 @@ class Controller {
     private var population = Population(POPULATION_SIZE, true, game, 1)
     private var timer = Timer()
     private var bestDistance = 0
+
+    var humanBird:Bird? = null
+    val humanBirdView = ImageView("img/birdFrame0.png")
 
     private val birdViews = population.birds.map { bird ->
         val imageView = ImageView("img/birdFrame0.png")
@@ -72,6 +78,15 @@ class Controller {
         restartTimer()
     }
 
+    @FXML
+    fun onJumpClicked(action: MouseEvent) {
+        if (humanBird == null) {
+            humanBird = Bird(game, HumanBrain())
+            gameContainer?.children?.add(humanBirdView)
+        }
+        (humanBird?.brain as HumanBrain).thinksAboutJumping = action.eventType == MouseEvent.MOUSE_PRESSED
+    }
+
     private fun restartTimer() {
         timer.cancel()
         timer.purge()
@@ -85,6 +100,7 @@ class Controller {
             override fun run() {
                 game.tick()
                 population.birds.forEach { it.tick() }
+                humanBird?.tick()
                 updateUI()
                 if (population.birds.all { it.isDead }) {
                     println("All dead")
@@ -106,6 +122,10 @@ class Controller {
 
     private fun updateUI() {
         Platform.runLater {
+            if (humanBird != null) {
+                humanBirdView.translateX = (humanBird!!.xPos - game.currentX - humanBird!!.size).toDouble()
+                humanBirdView.translateY = (Game.HEIGHT - humanBird!!.yPos - humanBird!!.size).toDouble()
+            }
             birdViews.forEachIndexed { index, imageView ->
                 val bird = population.birds[index]
                 imageView.translateX = (bird.xPos - game.currentX - bird.size).toDouble()
