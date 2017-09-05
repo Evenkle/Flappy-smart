@@ -18,7 +18,7 @@ class Controller {
     var gameContainer: Pane? = null
 
     val game = Game()
-    var population = Population(POPULATION_SIZE, game)
+    var population = Population(POPULATION_SIZE, true, game)
     private var timer = Timer()
 
     val birdViews = List(POPULATION_SIZE, {

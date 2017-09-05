@@ -54,14 +54,14 @@ public class NeuralNetwork implements Brain {
         if(inputs.length != numInputs){
             throw new IllegalArgumentException();
         }
-        double nevron = 0;
+        double neuron = 0;
         for (int i = 0; i < numHidden; i++) {
             for (int j = 0; j < numInputs; j++) {
-                nevron += inputs[j] * weightsInnToHidden[j+(2*i)];
+                neuron += inputs[j] * weightsInnToHidden[j+(2*i)];
             }
-            hiddenNeurons[i] = Sigmoid.sigmoid(nevron);
+            hiddenNeurons[i] = Sigmoid.sigmoid(neuron);
         }
-        System.out.println(Arrays.toString(hiddenNeurons));
+        //System.out.println(Arrays.toString(hiddenNeurons));
         double output = 0;
 
         for (int i = 0; i < numHidden; i++) {
@@ -70,6 +70,13 @@ public class NeuralNetwork implements Brain {
         return Sigmoid.sigmoid(output);
     }
 
+    @Override
+    public String toString() {
+        String str = "";
+        str += Arrays.toString(weightsInnToHidden);
+        str += Arrays.toString(weightsHiddenToOut);
+        return str;
+    }
 
     @Override
     public void setContext(Bird body, Game game) {

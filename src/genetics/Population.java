@@ -49,6 +49,11 @@ public class Population {
         return birds.length;
     }
 
+    @Override
+    public String toString() {
+        return Arrays.toString(birds);
+    }
+
     public static void main(String[] args) {
         Game game = new Game();
         Population pop = new Population(10,true, game);
