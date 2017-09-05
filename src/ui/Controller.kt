@@ -31,7 +31,7 @@ class Controller {
         pillarView.width = pillar.width.toDouble()
         pillarView.height = pillar.gapSize.toDouble()
         pillarView.translateX = pillar.xPos.toDouble()
-        pillarView.translateY = (pillar.gapY - pillar.gapSize / 2).toDouble()
+        pillarView.translateY = (Game.HEIGHT - pillar.gapY - pillar.gapSize / 2).toDouble()
         pillarView.fill = Color.valueOf("green")
         pillarView
     }
@@ -68,7 +68,7 @@ class Controller {
         timer.purge()
 
         timer = Timer()
-        timer.scheduleAtFixedRate(ticker, 500, 1000 / 30)
+        timer.scheduleAtFixedRate(ticker, 500, 1000 / 60)
     }
 
     private val ticker
@@ -94,14 +94,13 @@ class Controller {
     private fun updateUI() {
         birdViews.forEachIndexed { index, imageView ->
             val bird = population.birds[index]
-            imageView.isVisible = !bird.isDead
             imageView.translateX = (bird.xPos - game.currentX - bird.size).toDouble()
-            imageView.translateY = (Game.HEIGHT - bird.yPos + bird.size).toDouble()
+            imageView.translateY = (Game.HEIGHT - bird.yPos - bird.size).toDouble()
         }
         pillarViews.forEachIndexed { index, pillarView ->
             val pillar = game.pillars[index]
             pillarView.translateX = (pillar.xPos - pillar.width - game.currentX).toDouble()
-            pillarView.translateY = (Game.HEIGHT - pillar.gapY + pillar.gapSize / 2).toDouble()
+            pillarView.translateY = (Game.HEIGHT - pillar.gapY - pillar.gapSize / 2).toDouble()
         }
     }
 

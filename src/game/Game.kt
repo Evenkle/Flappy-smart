@@ -7,7 +7,7 @@ class Game {
     val pillars = List(PILLAR_COUNT, { Pillar((it + 1) * WIDTH / PILLAR_COUNT) })
 
     fun reset() {
-        currentX = 0
+        currentX = -50
         pillars.forEachIndexed({ index, pillar -> pillar.recycle((index + 1) * WIDTH / PILLAR_COUNT) })
     }
 
@@ -20,9 +20,8 @@ class Game {
         val pillar = getNextPillar()
         val afterStart = bird.xPos > pillar.xPos - pillar.width
         val beforeEnd = bird.xPos - bird.size < pillar.xPos
-        val i = bird.yPos + (bird.size / 2) - pillar.gapY
-        println("$bird and $pillar: $afterStart, $beforeEnd, $i")
-        val outsideOpening = Math.abs(i) >= (pillar.gapSize + bird.size) / 2
+        var i = pillar.gapY - bird.yPos - (bird.size / 2)
+        val outsideOpening = Math.abs(i) > (pillar.gapSize - bird.size) / 2
         if (afterStart && beforeEnd && outsideOpening) {
             println("Killing $bird with $pillar because it was outside the opening")
             return true

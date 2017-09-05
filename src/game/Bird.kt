@@ -21,7 +21,7 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
         private set
 
     val fitness: Int
-        get() = xPos - Math.abs(yPos - game.getNextPillar().gapY)
+        get() = xPos - Math.abs(yPos + (size/2) - game.getNextPillar().gapY)
 
     init {
         brain.setContext(this, game)

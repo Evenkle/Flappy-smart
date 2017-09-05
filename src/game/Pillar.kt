@@ -7,7 +7,7 @@ class Pillar(xPos: Int) {
     var gapY = ((Game.HEIGHT / 4) + Math.random() * Game.HEIGHT / 2).toInt()
         private set
     // This is the total height of the gap
-    val gapSize = 100
+    val gapSize = 150
     val width = 50
 
     fun recycle(newX:Int) {
