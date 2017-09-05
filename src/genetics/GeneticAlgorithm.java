@@ -27,7 +27,7 @@ public class GeneticAlgorithm {
     private static final int ignores = 2;
 
     public static Population evolvePopulation(Population population){
-        Bird[] oldBirds = population.getSotedBirds();
+        Bird[] oldBirds = population.getSortedBirds();
 
         Bird[] newBirds = new Bird[population.size()];
         List<Bird> generationBase = new ArrayList<>();
@@ -46,7 +46,7 @@ public class GeneticAlgorithm {
             generationBase.remove(bird1);
             Bird bird2 = generationBase.get(randomGenerator.nextInt(generationBase.size()));
             generationBase.add(bird1);
-            Bird babyBird = crossower(bird1, bird2, population.getGame());
+            Bird babyBird = crossover(bird1, bird2, population.getGame());
             newBirds[i] = babyBird;
         }
 
@@ -57,7 +57,7 @@ public class GeneticAlgorithm {
         return new Population(newBirds, population.getGame());
     }
 
-    private static Bird crossower(Bird bird1, Bird bird2, Game game){
+    private static Bird crossover(Bird bird1, Bird bird2, Game game){
         NeuralNetwork brain1 = (NeuralNetwork) bird1.getBrain();
         NeuralNetwork brain2 = (NeuralNetwork) bird2.getBrain();
 

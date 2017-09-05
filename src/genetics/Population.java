@@ -5,7 +5,6 @@ import game.Game;
 import smart.NeuralNetwork;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 public class Population {
 
@@ -32,7 +31,7 @@ public class Population {
         return game;
     }
 
-    public Bird[] getSotedBirds() {
+    public Bird[] getSortedBirds() {
         Arrays.sort(birds);
         return birds;
     }

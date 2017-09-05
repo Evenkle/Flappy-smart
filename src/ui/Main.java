@@ -1,6 +1,6 @@
 package ui;
 
-import game.GameKt;
+import game.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,8 +13,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, GameKt.getWIDTH() * 2, GameKt.getHEIGHT()));
+        primaryStage.setScene(new Scene(root, Game.Companion.getWIDTH() * 2, Game.Companion.getHEIGHT()));
         primaryStage.show();
+        primaryStage.setOnCloseRequest(value -> System.exit(0));
     }
 
 

@@ -2,13 +2,11 @@ package game
 
 import smart.Brain
 
-private val gravity = -1
-
 /**
  * A square bird.
  */
 class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
-    val size = 10
+    val size = 30
     var isDead = false
         private set // Can not be updated from outside this class
 
@@ -34,9 +32,9 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
         xPos += 1
         ySpeed += gravity
         yPos += ySpeed
-        if (yPos > HEIGHT) yPos = HEIGHT
+        if (yPos > Game.HEIGHT) yPos = Game.HEIGHT
         isDead = game.checkKilled(this)
-        if (brain.thinksAboutJumping()) ySpeed = 20
+        if (brain.thinksAboutJumping()) ySpeed = 10
     }
 
     override fun compareTo(other: Bird): Int {
@@ -45,5 +43,9 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
 
     override fun toString(): String {
         return "Bird at ($xPos, $yPos) fitness $fitness"
+    }
+
+    companion object {
+        private val gravity = -1
     }
 }

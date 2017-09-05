@@ -16,15 +16,16 @@ public class NeuralNetwork implements Brain {
     private static final int numHidden = 6;
     private static final int numOutput = 1;
 
-    public double[] weightsInnToHidden = new double[numInputs*numHidden];
-    public double[] weightsHiddenToOut = new double[numHidden*numOutput];
+    public double[] weightsInnToHidden = new double[numInputs * numHidden];
+    public double[] weightsHiddenToOut = new double[numHidden * numOutput];
 
     double[] hiddenNeurons = new double[numHidden];
+
     {
         Arrays.fill(hiddenNeurons, 0);
     }
 
-    public NeuralNetwork(){
+    public NeuralNetwork() {
         randIntitWeights(weightsInnToHidden, numInputs, numHidden);
         randIntitWeights(weightsHiddenToOut, numHidden, numOutput);
     }
@@ -33,13 +34,13 @@ public class NeuralNetwork implements Brain {
      * Return an array of randomly initialized doubles in the range -epsilon,epsilon
      * where epsilon = sqrt(6)/sqrt(in + out)
      */
-    private void randIntitWeights(double[] weights, int numInn, int numOut){
-        double epsilon = Math.sqrt(6)/Math.sqrt(numInn+numOut);
+    private void randIntitWeights(double[] weights, int numInn, int numOut) {
+        double epsilon = Math.sqrt(6) / Math.sqrt(numInn + numOut);
         Random r = new Random();
         for (int i = 0; i < weights.length; i++) {
             double newWeight;
             do {
-                newWeight = (epsilon*2*r.nextDouble()) - epsilon;
+                newWeight = (epsilon * 2 * r.nextDouble()) - epsilon;
             } while (newWeight == 0);
             weights[i] = newWeight;
         }
@@ -47,17 +48,18 @@ public class NeuralNetwork implements Brain {
 
     /**
      * Calculate the output from the input
+     *
      * @param inputs takes 2 inputs
      * @return calculated output
      */
-    private double calculate(double... inputs){
-        if(inputs.length != numInputs){
+    private double calculate(double... inputs) {
+        if (inputs.length != numInputs) {
             throw new IllegalArgumentException();
         }
         double neuron = 0;
         for (int i = 0; i < numHidden; i++) {
             for (int j = 0; j < numInputs; j++) {
-                neuron += inputs[j] * weightsInnToHidden[j+(2*i)];
+                neuron += inputs[j] * weightsInnToHidden[j + (2 * i)];
             }
             hiddenNeurons[i] = Sigmoid.sigmoid(neuron);
         }
@@ -95,7 +97,7 @@ public class NeuralNetwork implements Brain {
         // horizontal distance to next checkpoint
         double xDistance = pillar.getXPos() + pillar.getWidth() - body.getXPos();
 
-        double out = calculate(heightDifferance,xDistance);
+        double out = calculate(heightDifferance, xDistance);
         return out > 0.5;
     }
 }

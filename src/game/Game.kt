@@ -1,30 +1,33 @@
 package game
 
-val WIDTH = 300
-val HEIGHT = 500
-val PILLAR_COUNT = 2
-
 class Game {
-    var currentX = 0
+    var currentX = -50
         private set
 
     val pillars = List(PILLAR_COUNT, { Pillar((it + 1) * WIDTH / PILLAR_COUNT) })
 
     fun reset() {
         currentX = 0
-        pillars.forEachIndexed({ index, pillar -> pillar.xPos = (index + 1) * WIDTH / PILLAR_COUNT })
+        pillars.forEachIndexed({ index, pillar -> pillar.recycle((index + 1) * WIDTH / PILLAR_COUNT) })
     }
 
     fun checkKilled(bird: Bird): Boolean {
-        if (bird.yPos <= 0) return true
-        // Check if we crashed into any pillar whatsoever
-        return pillars.any {
-            val afterStart = bird.xPos > it.xPos - it.width
-            val beforeEnd = bird.xPos - bird.size < it.xPos
-            val belowGap = bird.yPos < it.gapY - it.gapSize / 2
-            val aboveGap = bird.yPos + bird.size > it.gapY + it.gapSize / 2
-            afterStart && beforeEnd && (belowGap || aboveGap)
+        if (bird.yPos <= 0) {
+            println("Killing $bird because it crashed into the ground")
+            return true
         }
+        // Check if we crashed into any pillar whatsoever
+        val pillar = getNextPillar()
+        val afterStart = bird.xPos > pillar.xPos - pillar.width
+        val beforeEnd = bird.xPos - bird.size < pillar.xPos
+        val i = bird.yPos + (bird.size / 2) - pillar.gapY
+        println("$bird and $pillar: $afterStart, $beforeEnd, $i")
+        val outsideOpening = Math.abs(i) >= (pillar.gapSize + bird.size) / 2
+        if (afterStart && beforeEnd && outsideOpening) {
+            println("Killing $bird with $pillar because it was outside the opening")
+            return true
+        }
+        return false
     }
 
     fun tick() {
@@ -32,7 +35,7 @@ class Game {
 
         pillars.forEach {
             if (it.xPos + it.width < currentX) {
-                it.xPos = currentX + WIDTH
+                it.recycle(currentX + WIDTH + it.width)
             }
         }
         /*
@@ -60,4 +63,9 @@ class Game {
         })
     }
 
+    companion object {
+        val WIDTH = 300
+        val HEIGHT = 500
+        val PILLAR_COUNT = 2
+    }
 }
