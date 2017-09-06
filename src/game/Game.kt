@@ -24,8 +24,7 @@ class Game {
         val pillar = getNextPillar()
         val afterStart = bird.xPos > pillar.xPos - pillar.width
         val beforeEnd = bird.xPos - bird.size < pillar.xPos
-        var i = pillar.gapY - bird.yPos - (bird.size / 2)
-        val outsideOpening = Math.abs(i) > (pillar.gapSize - bird.size) / 2
+        val outsideOpening = Math.abs(pillar.gapY - bird.yPos - (bird.size / 2)) > (pillar.gapSize - bird.size) / 2
         if (afterStart && beforeEnd && outsideOpening) {
             println("$bird crashed into $pillar")
             return true
