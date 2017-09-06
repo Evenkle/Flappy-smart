@@ -1,8 +1,8 @@
 package ui
 
-import game.Pillar
 import game.Bird
 import game.Game
+import game.Pillar
 import genetics.GeneticAlgorithm
 import genetics.Population
 import javafx.application.Platform
@@ -12,8 +12,6 @@ import javafx.scene.control.Label
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
-import javafx.scene.paint.Color
-import javafx.scene.shape.Rectangle
 import smart.HumanBrain
 import java.util.*
 
@@ -40,13 +38,7 @@ class Controller {
     }
 
     private val pillarViews = game.pillars.map { pillar ->
-        val pillarView = Rectangle()
-        pillarView.width = Pillar.width.toDouble()
-        pillarView.height = Pillar.gapSize.toDouble()
-        pillarView.translateX = pillar.xPos.toDouble()
-        pillarView.translateY = (Game.HEIGHT - pillar.gapY - Pillar.gapSize / 2).toDouble()
-        pillarView.fill = Color.valueOf("green")
-        pillarView
+        PillarView(pillar)
     }
 
     @FXML
@@ -134,8 +126,8 @@ class Controller {
             }
             pillarViews.forEachIndexed { index, pillarView ->
                 val pillar = game.pillars[index]
+                pillarView.recycle()
                 pillarView.translateX = (pillar.xPos - Pillar.width - game.currentX).toDouble()
-                pillarView.translateY = (Game.HEIGHT - pillar.gapY - Pillar.gapSize / 2).toDouble()
             }
         }
     }
