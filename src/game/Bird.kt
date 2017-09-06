@@ -17,7 +17,7 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
         private set
 
     // Negative => falling
-    var ySpeed = 0
+    var ySpeed = 20
         private set
 
     val fitness: Int

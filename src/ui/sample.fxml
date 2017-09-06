@@ -17,6 +17,7 @@
                 <Button mnemonicParsing="false" onAction="#onResetClicked" text="Reset" />
             </buttons>
         </ButtonBar>
+        <Button mnemonicParsing="false" onMousePressed="#onJumpClicked" onMouseReleased="#onJumpClicked" text="Jump!" />
       <Label fx:id="statusText" text="Click start to … uhm, start?" textFill="WHITE" />
     </VBox>
 </HBox>
