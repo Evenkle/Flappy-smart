@@ -1,5 +1,6 @@
 package ui
 
+import game.Pillar
 import game.Bird
 import game.Game
 import genetics.GeneticAlgorithm
@@ -40,10 +41,10 @@ class Controller {
 
     private val pillarViews = game.pillars.map { pillar ->
         val pillarView = Rectangle()
-        pillarView.width = pillar.width.toDouble()
-        pillarView.height = pillar.gapSize.toDouble()
+        pillarView.width = Pillar.width.toDouble()
+        pillarView.height = Pillar.gapSize.toDouble()
         pillarView.translateX = pillar.xPos.toDouble()
-        pillarView.translateY = (Game.HEIGHT - pillar.gapY - pillar.gapSize / 2).toDouble()
+        pillarView.translateY = (Game.HEIGHT - pillar.gapY - Pillar.gapSize / 2).toDouble()
         pillarView.fill = Color.valueOf("green")
         pillarView
     }
@@ -133,8 +134,8 @@ class Controller {
             }
             pillarViews.forEachIndexed { index, pillarView ->
                 val pillar = game.pillars[index]
-                pillarView.translateX = (pillar.xPos - pillar.width - game.currentX).toDouble()
-                pillarView.translateY = (Game.HEIGHT - pillar.gapY - pillar.gapSize / 2).toDouble()
+                pillarView.translateX = (pillar.xPos - Pillar.width - game.currentX).toDouble()
+                pillarView.translateY = (Game.HEIGHT - pillar.gapY - Pillar.gapSize / 2).toDouble()
             }
         }
     }

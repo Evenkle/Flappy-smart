@@ -6,9 +6,6 @@ class Pillar(xPos: Int) {
     // This is the center of the gap
     var gapY = ((Game.HEIGHT / 4) + Math.random() * Game.HEIGHT / 2).toInt()
         private set
-    // This is the total height of the gap
-    val gapSize = 150
-    val width = 50
 
     fun recycle(newX:Int) {
         xPos = newX
@@ -17,5 +14,11 @@ class Pillar(xPos: Int) {
 
     override fun toString(): String {
         return "pillar at $xPos, $gapY"
+    }
+
+    companion object {
+        // This is the total height of the gap
+        val gapSize = 150
+        val width = 50
     }
 }

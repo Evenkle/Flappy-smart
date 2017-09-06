@@ -4,11 +4,11 @@ class Game {
     var currentX = -50
         private set
 
-    val pillars = List(PILLAR_COUNT, { Pillar((it + 2) * WIDTH / PILLAR_COUNT) })
+    val pillars = List(PILLAR_COUNT, { index -> Pillar((index + 2) * (WIDTH + Pillar.width) / PILLAR_COUNT)  })
 
     fun reset() {
         currentX = -50
-        pillars.forEachIndexed({ index, pillar -> pillar.recycle((index + 2) * WIDTH / PILLAR_COUNT) })
+        pillars.forEachIndexed({ index, pillar -> pillar.recycle((index + 2) * (WIDTH + Pillar.width) / PILLAR_COUNT)  })
     }
 
     fun checkKilled(bird: Bird): Boolean {
@@ -22,9 +22,9 @@ class Game {
         }
         // Check if we crashed into any pillar whatsoever
         val pillar = getNextPillar()
-        val afterStart = bird.xPos > pillar.xPos - pillar.width
+        val afterStart = bird.xPos > pillar.xPos - Pillar.width
         val beforeEnd = bird.xPos - bird.size < pillar.xPos
-        val outsideOpening = Math.abs(pillar.gapY - bird.yPos - (bird.size / 2)) > (pillar.gapSize - bird.size) / 2
+        val outsideOpening = Math.abs(pillar.gapY - bird.yPos - (bird.size / 2)) > (Pillar.gapSize - bird.size) / 2
         if (afterStart && beforeEnd && outsideOpening) {
             println("$bird crashed into $pillar")
             return true
@@ -37,7 +37,7 @@ class Game {
 
         pillars.forEach {
             if (it.xPos < currentX) {
-                it.recycle(currentX + WIDTH + it.width)
+                it.recycle(currentX + WIDTH + Pillar.width)
             }
         }
         /*
