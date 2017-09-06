@@ -34,7 +34,7 @@ class Game {
     }
 
     fun tick() {
-        currentX += 1
+        currentX += 2
 
         pillars.forEach {
             if (it.xPos < currentX) {

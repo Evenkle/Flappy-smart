@@ -97,6 +97,7 @@ public class NeuralNetwork implements Brain {
         // horizontal distance to next checkpoint
         double xDistance = pillar.getXPos() + pillar.getWidth() - body.getXPos();
 
+        //double out = calculate(heightDifference, xDistance, body.getYSpeed());
         double out = calculate(heightDifference, xDistance);
         return out > 0.5;
     }

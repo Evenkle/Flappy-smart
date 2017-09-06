@@ -14,12 +14,12 @@ public class GeneticAlgorithm {
     private static final double uniformRate = 0.5;
 
     private static final double mutationRate = 0.015;
-    private static final double mutationUpper = 1;
-    private static final double mutationLower = -1;
+    private static final double mutationUpper = 0.5;
+    private static final double mutationLower = -0.5;
 
     // num individuals that jumps over to the next generation.
-    private static final int elitism = 2;
-    private static final int elitismOffset = elitism - 1;
+    private static final int elitism = 3;
+    private static final int elitismOffset = elitism;
 
     private static final int theBest = 4;
 
@@ -49,7 +49,7 @@ public class GeneticAlgorithm {
             Bird babyBird = crossover(bird1, bird2, population.getGame());
             newBirds[i] = babyBird;
         }
-
+        System.out.println(newBirds[0].getBrain());
         for (int i = elitismOffset; i < population.size(); i++) {
             mutate(newBirds[i]);
         }
