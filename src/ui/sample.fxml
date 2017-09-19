@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<HBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
+<HBox xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
     <Pane fx:id="gameContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" />
     <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #333;" HBox.hgrow="ALWAYS">
         <ButtonBar prefHeight="40.0" prefWidth="200.0">
@@ -24,9 +24,9 @@
             <Insets left="30.0" right="30.0" />
          </VBox.margin>
         </ButtonBar>
-      <Label fx:id="statusText" text="Click start to … uhm, start?" textFill="WHITE">
+      <Label fx:id="statusText" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Click start to … uhm, start?" textAlignment="CENTER" textFill="WHITE">
          <VBox.margin>
-            <Insets left="50.0" right="50.0" />
+            <Insets />
          </VBox.margin></Label>
       <GridPane fx:id="textContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="295.0">
         <columnConstraints>
