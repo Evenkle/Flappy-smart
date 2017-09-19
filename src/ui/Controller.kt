@@ -121,6 +121,7 @@ class Controller {
         statusText ?. text = "Best distance: ${bestDistance}. Generation: ${population.generation}."
         game.reset()
         if(population.sortedBirds.get(0).score < 2){
+            println("It's retarded!")
             population = Population(POPULATION_SIZE, true, game, population.generation)
         } else {
             population = GeneticAlgorithm.evolvePopulation(population)
