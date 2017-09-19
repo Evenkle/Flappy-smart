@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
         primaryStage.setTitle("Flap Flap rEvolution");
         Scene scene = new Scene(root, Game.Companion.getWIDTH() * 2, Game.Companion.getHEIGHT());
         primaryStage.setScene(scene);

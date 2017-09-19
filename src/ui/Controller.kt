@@ -54,8 +54,8 @@ class Controller {
         gameContainer?.children?.addAll(pillarViews)
         gameContainer?.children?.addAll(birdViews)
         val children = textContainer?.children
-        scoreTexts = children?.filter { it.id.startsWith("score") } as List<Text>
-        fitnessTexts = children?.filter { it.id.startsWith("fitness") } as List<Text>
+        scoreTexts = children?.filter { it.id?.startsWith("score") ?: false } as List<Text>
+        fitnessTexts = children?.filter { it.id?.startsWith("fitness") ?: false } as List<Text>
     }
 
     @FXML
