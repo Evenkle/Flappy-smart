@@ -82,10 +82,6 @@
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="9">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
             <Text fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" />
