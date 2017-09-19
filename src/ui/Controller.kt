@@ -11,7 +11,9 @@ import javafx.fxml.FXML
 import javafx.scene.control.Label
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
+import javafx.scene.layout.GridPane
 import javafx.scene.layout.Pane
+import javafx.scene.text.Text
 import smart.HumanBrain
 import java.util.*
 
@@ -23,6 +25,9 @@ class Controller {
 
     @FXML
     var statusText: Label? = null
+
+    @FXML
+    var textContainer: GridPane? = null
 
     private var game = Game()
     private var population = Population(POPULATION_SIZE, true, game, 1)
@@ -41,16 +46,22 @@ class Controller {
         PillarView(pillar)
     }
 
+    var scoreTexts: List<Text>? = null
+    var fitnessTexts: List<Text>? = null
+
     @FXML
     fun initialize() {
         gameContainer?.children?.addAll(pillarViews)
         gameContainer?.children?.addAll(birdViews)
+        val children = textContainer?.children
+        scoreTexts = children?.filter { it.id.startsWith("score") } as List<Text>
+        fitnessTexts = children?.filter { it.id.startsWith("fitness") } as List<Text>
     }
 
     @FXML
     fun onStartClicked(action: ActionEvent) {
         println("Starting game!")
-        statusText?.text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
+        statusText?.text = "Best distance: ${bestDistance}. Generation: ${population.generation}. "
         restartTimer()
     }
 
@@ -67,7 +78,7 @@ class Controller {
         game = Game()
         population = Population(POPULATION_SIZE, true, game, 1)
         bestDistance = 0
-        statusText?.text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
+        statusText?.text = "Best distance: ${bestDistance}. Generation: ${population.generation}. "
         restartTimer()
     }
 
@@ -107,7 +118,7 @@ class Controller {
 
     private fun createGeneration() {
         bestDistance = Math.max(bestDistance, population.birds.maxBy { it.score }!!.score)
-        statusText ?. text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
+        statusText ?. text = "Best distance: ${bestDistance}. Generation: ${population.generation}."
         game.reset()
         population = GeneticAlgorithm.evolvePopulation(population)
         restartTimer()
@@ -119,10 +130,14 @@ class Controller {
                 humanBirdView.translateX = (humanBird!!.xPos - game.currentX - humanBird!!.size).toDouble()
                 humanBirdView.translateY = (Game.HEIGHT - humanBird!!.yPos - humanBird!!.size).toDouble()
             }
-            birdViews.forEachIndexed { index, imageView ->
-                val bird = population.birds[index]
+            population.birds.forEachIndexed{index, bird ->
+                val imageView = birdViews[index]
                 imageView.translateX = (bird.xPos - game.currentX - bird.size).toDouble()
                 imageView.translateY = (Game.HEIGHT - bird.yPos - bird.size).toDouble()
+                if (!bird.isDead) {
+                    scoreTexts?.get(index)?.text = bird.score.toString()
+                    fitnessTexts?.get(index)?.text = bird.fitness.toString()
+                }
             }
             pillarViews.forEachIndexed { index, pillarView ->
                 val pillar = game.pillars[index]

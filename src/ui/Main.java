@@ -13,7 +13,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Flap Flap rEvolution");
-        primaryStage.setScene(new Scene(root, Game.Companion.getWIDTH() * 2, Game.Companion.getHEIGHT()));
+        Scene scene = new Scene(root, Game.Companion.getWIDTH() * 2, Game.Companion.getHEIGHT());
+        primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setOnCloseRequest(value -> System.exit(0));
     }
