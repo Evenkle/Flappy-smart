@@ -106,8 +106,8 @@ class Controller {
         }
 
     private fun createGeneration() {
-        bestDistance = Math.max(bestDistance, game.currentX)
-        statusText?.text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
+        bestDistance = Math.max(bestDistance, population.birds.maxBy { it.score }!!.score)
+        statusText ?. text = "Best distance: ${bestDistance}\nGeneration: ${population.generation}"
         game.reset()
         population = GeneticAlgorithm.evolvePopulation(population)
         restartTimer()
