@@ -18,7 +18,7 @@ class Pillar(xPos: Int) {
 
     companion object {
         // This is the total height of the gap
-        val gapSize = 150
+        val gapSize = 140
         val width = 50
     }
 }
