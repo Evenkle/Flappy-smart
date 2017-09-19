@@ -120,7 +120,11 @@ class Controller {
         bestDistance = Math.max(bestDistance, population.birds.maxBy { it.score }!!.score)
         statusText ?. text = "Best distance: ${bestDistance}. Generation: ${population.generation}."
         game.reset()
-        population = GeneticAlgorithm.evolvePopulation(population)
+        if(population.sortedBirds.get(0).score < 2){
+            population = Population(POPULATION_SIZE, true, game, population.generation)
+        } else {
+            population = GeneticAlgorithm.evolvePopulation(population)
+        }
         restartTimer()
     }
 
