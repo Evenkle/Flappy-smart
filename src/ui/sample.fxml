@@ -40,94 +40,94 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="8">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="9">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin></Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text id="fitnessText0" fill="WHITE" layoutX="10.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1">
+            <Text id="fitnessText1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText2" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText3" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText4" fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText5" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText6" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText7" fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText8" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="fitnessText9" fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText0" fill="WHITE" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
+            <Text id="scoreText1" fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText2" fill="WHITE" layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText3" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText4" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText5" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText6" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText7" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText8" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
+            <Text id="scoreText9" fill="WHITE" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Text>
          </children>
          <VBox.margin>
             <Insets />
