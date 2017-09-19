@@ -24,6 +24,9 @@ class Bird(private val game: Game, val brain: Brain) : Comparable<Bird> {
         get() = xPos - (game.getNextPillar().xPos - xPos)
         //get() = xPos - Math.abs(yPos + (size/2) - game.getNextPillar().gapY)
 
+    val score: Int
+        get() = xPos / game.pillarInterval
+
     init {
         brain.setContext(this, game)
     }

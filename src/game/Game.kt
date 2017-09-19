@@ -4,11 +4,13 @@ class Game {
     var currentX = -50
         private set
 
-    val pillars = List(PILLAR_COUNT, { index -> Pillar((index + 2) * (WIDTH + Pillar.width) / PILLAR_COUNT)  })
+    val pillarInterval = (WIDTH + Pillar.width) / PILLAR_COUNT
+
+    val pillars = List(PILLAR_COUNT, { index -> Pillar((index + 2) * pillarInterval)  })
 
     fun reset() {
         currentX = -50
-        pillars.forEachIndexed({ index, pillar -> pillar.recycle((index + 2) * (WIDTH + Pillar.width) / PILLAR_COUNT)  })
+        pillars.forEachIndexed({ index, pillar -> pillar.recycle((index + 2) * pillarInterval)  })
     }
 
     fun checkKilled(bird: Bird): Boolean {
@@ -40,15 +42,6 @@ class Game {
                 it.recycle(currentX + WIDTH + Pillar.width)
             }
         }
-        /*
-        if (!pillars.removeIf({ it.xPos + it.width < currentX }))
-            return // No pillars removed, so return
-        val lastPillarX = pillars.maxBy { it.xPos }
-        pillars.addAll(
-                List(PILLAR_COUNT - pillars.size, // How many pillars we add
-                        { Pillar(lastPillarX + (it + 1) * WIDTH / PILLAR_COUNT) }) // Where we add them
-        )
-        */
     }
 
     /**
