@@ -42,6 +42,14 @@ public class GeneticAlgorithm {
         }
 
         for (int i = elitismOffset; i < population.size(); i++) {
+            if(i == population.size() - 1){
+                Bird bird1 = generationBase.get(0);
+                Bird bird2 = generationBase.get(1);
+                Bird babyBird = crossover(bird1, bird2, population.getGame());
+                newBirds[i] = babyBird;
+                break;
+            }
+
             Bird bird1 = generationBase.get(randomGenerator.nextInt(generationBase.size()));
             generationBase.remove(bird1);
             Bird bird2 = generationBase.get(randomGenerator.nextInt(generationBase.size()));
