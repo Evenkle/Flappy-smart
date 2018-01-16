@@ -3,13 +3,14 @@ package genetics
 import game.Bird
 import game.FakeBrain
 import game.Game
-import org.junit.jupiter.api.Test
+import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.fail
 
 internal class GeneticAlgorithmTest {
 
-    @Test fun doesWork() {
+    @Test
+    fun doesWork() {
         runSimulation(null, 10)
     }
 

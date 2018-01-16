@@ -1,7 +1,8 @@
 package game
 
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
+import junit.framework.TestCase.*
+import org.junit.Test
+
 
 internal class BirdTest {
     @Test
@@ -43,7 +44,7 @@ internal class BirdTest {
             brain.willJump = !brain.willJump
         }
 
-        assertTrue(bird.fitness > -200, bird.toString())
+        assertTrue(bird.toString(), bird.fitness > -200)
     }
 
 }
